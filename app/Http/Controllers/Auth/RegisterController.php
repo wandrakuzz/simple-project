@@ -77,6 +77,7 @@ class RegisterController extends Controller
           'matric_no'=> null,
           'gender'   => null,
           'year'     => null,
+          'no_tel'   => null,
 
         ]);
 

@@ -75,9 +75,28 @@ class ProfileController extends Controller
      * @param  \App\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profile $profile)
+    public function update(Request $request , $id)
     {
         //
+
+        $user = User::findOrFail($id);
+        $profile = Profile::where('user_id', $id)->first();
+
+        $user->email          = $request->email;
+
+
+        $profile->fullname   = $request->fullname;
+        $profile->matric_no  = $request->matric_no;
+        $profile->course_id  = $request->course_id;
+        $profile->gender     = $request->gender;
+        $profile->year       = $request->year;
+        $profile->no_tel     = $request->no_tel;
+
+        $profile->save();
+        $user->save();
+
+        return back();
+
     }
 
     /**

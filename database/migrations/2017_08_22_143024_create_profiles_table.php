@@ -21,6 +21,7 @@ class CreateProfilesTable extends Migration
             $table->string('matric_no')->nullable();
             $table->enum('gender',['male','female'])->nullable();
             $table->integer('year')->nullable();
+            $table->string('no_tel')->nullable();
             $table->timestamps();
 
             //$table->foreign('course_id')->references('id')->on('courses');

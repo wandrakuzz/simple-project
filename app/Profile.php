@@ -14,6 +14,7 @@ class Profile extends Model
       'matric_no',
       'gender',
       'year',
+      'no_tel',
     ];
 
     public function user()

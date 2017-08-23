@@ -5,8 +5,10 @@
 <h2>Update Profile</h2>
 <br>
 
-  <form class="" action="index.html" method="post">
+  <form class="" action="{{ url ('/profile/update' , $users[0]->id) }}" method="POST" enctype="multipart/form-data">
+
     {{ csrf_field() }}
+    {{ method_field('PATCH') }}
 
     @foreach( $users as $user)
     <div class="form-group row">

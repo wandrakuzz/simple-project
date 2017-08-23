@@ -25,3 +25,4 @@ Route::delete('/project/suggest/delete/{id}', 'SuggestController@destroy');
 
 Route::get('/profile','ProfileController@index');
 Route::get('/profile/form' , 'ProfileController@create');
+Route::patch('/profile/update/{id}', 'ProfileController@update');
