@@ -52,6 +52,14 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('club_id') ? ' has-error' : '' }}">
                             <label for="club_id" class="col-md-4 control-label">SIG</label>
 
@@ -68,14 +76,6 @@
                                         <strong>{{ $errors->first('club_id') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
 

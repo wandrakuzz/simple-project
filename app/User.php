@@ -39,6 +39,11 @@ class User extends Authenticatable
       return $this->belongsTo(Club::class);
     }
 
+    public function profile()
+    {
+      return $this->belongsTo(Profile::class);
+    }
+
 
 
 

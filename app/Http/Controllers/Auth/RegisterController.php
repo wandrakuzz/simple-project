@@ -63,12 +63,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'club_id' =>$data['club_id'],
         ]);
+
+        $user->profile()->create([
+          'user_id'  => $user->id,
+          'course_id'=> null,
+          'fullname' => null,
+          'matric_no'=> null,
+          'gender'   => null,
+          'year'     => null,
+
+        ]);
+
+        return $user;
     }
 
     public function showRegistrationForm()

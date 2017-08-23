@@ -29,7 +29,7 @@
           </div><br><br>
         </div>
         <div class="form-group" >
-            <button type="submit" name="button" class="btn btn-success pull-right">Submit</button>
+            <button type="submit" name="button" class="btn btn-primary pull-right">Submit</button>
         </div>
       </form>
       <br><br>

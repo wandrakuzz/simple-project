@@ -21,5 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/project/suggest','SuggestController@index');
 Route::Post('/project/create/submit', 'SuggestController@store');
-
 Route::delete('/project/suggest/delete/{id}', 'SuggestController@destroy');
+
+Route::get('/profile','ProfileController@index');
+Route::get('/profile/form' , 'ProfileController@create');
