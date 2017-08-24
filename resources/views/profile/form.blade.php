@@ -32,7 +32,7 @@
     <div class="form-group row">
       <label for="example-text-input" class="col-sm-1 col-form-label">Email</label>
       <div class="col-sm-6">
-        <input class="form-control" type="text" value="{{ $user->email }}" id="example-text-input">
+        <input class="form-control" type="text" name="email" value="{{ $user->email }}">
       </div>
     </div>
 

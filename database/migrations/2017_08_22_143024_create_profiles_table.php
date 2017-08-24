@@ -19,7 +19,7 @@ class CreateProfilesTable extends Migration
             $table->unsignedInteger('course_id')->nullable();
             $table->string('fullname')->nullable();
             $table->string('matric_no')->nullable();
-            $table->enum('gender',['male','female'])->nullable();
+            $table->string('gender')->nullable();
             $table->integer('year')->nullable();
             $table->string('no_tel')->nullable();
             $table->timestamps();
