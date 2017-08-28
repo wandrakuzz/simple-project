@@ -6,6 +6,7 @@ use App\Profile;
 use App\User;
 use App\Course;
 use Auth;
+use Image;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -18,7 +19,9 @@ class ProfileController extends Controller
     public function index()
     {
         //
-        return view('profile.profile');
+        $users = User::where('id',Auth::user()->id)->with('club','profile')->get();
+        $courses = Course::get();
+        return view('profile.profile',compact('users','courses'));
     }
 
     /**
@@ -30,8 +33,9 @@ class ProfileController extends Controller
     {
         //
 
-        $users = User::where('id',Auth::id())->with('club')->get();
+        $users = User::where('id',Auth::id())->with('club','profile')->get();
         $courses = Course::get();
+
         return view('profile.form',compact('users','courses'));
     }
 
@@ -83,6 +87,7 @@ class ProfileController extends Controller
         $profile = Profile::where('user_id', $id)->first();
 
         $user->email          = $request->email;
+        $user->name           = $request->name;
 
 
         $profile->fullname   = $request->fullname;
@@ -95,7 +100,7 @@ class ProfileController extends Controller
         $profile->save();
         $user->save();
 
-        return back();
+        return back()->with('status','Successfully update!');
 
     }
 
@@ -109,4 +114,24 @@ class ProfileController extends Controller
     {
         //
     }
+
+    public function updateAvatar(Request $request)
+    {
+
+
+      if($request->hasFile('avatar')){
+    		$avatar = $request->file('avatar');
+    		$filename = time() . '.' . $avatar->getClientOriginalExtension();
+    		Image::make($avatar)->resize(300, 300)->save( public_path('/profile/avatar/' . $filename ) );
+
+    		$user = Auth::user();
+    		$user->avatar = $filename;
+    		$user->save();
+    	}
+
+    	return redirect()->action('ProfileController@index');
+
+    }
+
+
 }

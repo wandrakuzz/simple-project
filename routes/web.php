@@ -23,6 +23,11 @@ Route::get('/project/suggest','SuggestController@index');
 Route::Post('/project/create/submit', 'SuggestController@store');
 Route::delete('/project/suggest/delete/{id}', 'SuggestController@destroy');
 
-Route::get('/profile','ProfileController@index');
-Route::get('/profile/form' , 'ProfileController@create');
-Route::patch('/profile/update/{id}', 'ProfileController@update');
+Route::get('/profiles','ProfileController@index');
+Route::get('/profiles/form' , 'ProfileController@create');
+Route::patch('/profiles/update/{id}', 'ProfileController@update');
+Route::post('/profiles/avatar', 'ProfileController@updateAvatar');
+
+Route::get('/phpinfo', function() {
+    return phpinfo();
+});
