@@ -50,7 +50,7 @@
           </tr>
         </thead>
         <tbody>
-          @foreach( $lists as $list)
+          @forelse( $lists as $list)
           <tr>
             <th scope="row">{{ $loop->iteration }}</th>
             <td>{{ $list->user->name }}</td>
@@ -58,13 +58,19 @@
             <td>{{ $list->date }}</td>
             <td>{{ $list->time }}</td>
             <td>{{ $list->created_at->diffForHumans() }}</td>
-            <td><form class="" action="{{ url('/project/suggest/delete',$list->id)}}" method="POST">
-              <input type="hidden" name="_method" value="delete">
-              {!! csrf_field() !!}
-                <button class="btn btn-danger" type="submit" name="button">Delete</button>
-            </form></td>
+            <td>
+              <a href="{ action('SuggestController@destroy',$list->id)}}" class="btn btn-danger" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
+              <a href="{ action('SuggestController@destroy',$list->id)}}" class="btn btn-info" type="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit </a>
+            </td>
           </tr>
-          @endforeach
+
+          @empty
+
+          <tr>
+            <td colspan="8">No data available</td>
+          </tr>
+
+          @endforelse
         </tbody>
       </table>
 

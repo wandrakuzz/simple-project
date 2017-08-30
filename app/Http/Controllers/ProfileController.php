@@ -129,7 +129,7 @@ class ProfileController extends Controller
     		$user->save();
     	}
 
-    	return redirect()->action('ProfileController@index');
+    	return redirect()->action('ProfileController@index')->with('status', 'Profile picture succesfully update!!');
 
     }
 

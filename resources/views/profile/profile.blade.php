@@ -3,6 +3,15 @@
 @section('body')
 <div class="row">
 
+  @if (session('status'))
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    {{ session('status') }}
+  </div>
+  @endif
+
 <div class="panel panel-info">
 <div class="panel-heading">
   <h2 class="panel-title">Maklumat Diri</h2>
@@ -69,7 +78,7 @@
         </tbody>
       </table>
 
-      <a href="{{ url('/profiles/form') }}" class="btn btn-success pull-right">Kemaskini Maklumat Diri</a>
+      <a href="{{ url('/profiles/form') }}" class="btn btn-primary pull-right">Kemaskini Maklumat Diri</a>
 
     </div>
   </div>
